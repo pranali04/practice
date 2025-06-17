@@ -1,0 +1,19 @@
+d1 = {1:"this is a sample page of a good good good good book not a book", 2:"this is not that much good but still like a book"}
+for each in d1:
+    d1[each]= d1[each].split(" ")
+
+d2 = {}
+for page in d1:
+    for word in d1[page]:
+        if word not in d2:
+            d2[word] = {page:d1[page].count(word)}
+        else:
+            d2[word][page] = d1[page].count(word)
+# print(d2)
+for word in d2:
+    print(word,": ",list(d2[word].keys()))
+
+d3= dict(sorted(d2.items(),key= lambda item :sum(item[1].values()), reverse=True))
+print("based on popularity")
+for each in d3:
+    print(each,": ",list(d3[each].keys()))
